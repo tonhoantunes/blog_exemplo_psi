@@ -61,3 +61,11 @@ def mensagem(request):
     }
 
     return render(request, "mensagem.html", context)
+
+def editar_mensagem(request, mensagem_id):
+    context = {
+        "blog": Blog.objects.first(),
+        "mensagem": Mensagem.objects.get(pk=mensagem_id),
+    }
+
+    return render(request, "contact.html", context)
