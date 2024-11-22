@@ -38,7 +38,9 @@
                             em {{ mensagem.cidade }}
                             {% endif %}
                         </p>
-                        <button class="btn btn-danger btn-sm">Deletar</button>
+                        <a href="{% url 'deletar_mensagem' mensagem.id %}">
+                            <button class="btn btn-danger btn-sm">Deletar</button>
+                        </a>
                         <a href="{% url 'editar_mensagem' mensagem.id %}">
                             <button class="btn btn-warning btn-sm">Editar</button>
                         </a>
