@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block header %}
+    <!-- Page Header-->
+    <header class="masthead" style="background-image: url('{{ blog.capa.url }}')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="page-heading">
+                        <h1>Cadastro</h1>
+                        <span class="subheading">Cadastre-se aqui!</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock header %}
+
+{% block content %}
+<div class="container mt-5">
+    <form class="row g-3">  
+        <div class="col-md-6">
+            <label for="inputNome" class="form-label">Nome:</label>
+            <input type="text" class="form-control" id="inputNome">
+        </div>
+        <div class="col-md-6">
+            <label for="inputCPF" class="form-label">CPF:</label>
+            <input type="text" class="form-control" id="inputCPF">
+        </div>
+        <div class="col-md-6">
+            <label for="inputEmail1" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="inputEmail1">
+        </div>
+        <div class="col-md-6">
+            <label for="inputSenha2" class="form-label">Confirmar email:</label>
+            <input type="email" class="form-control" id="inputEmail2">
+        </div>
+        <div class="col-12">
+            <label for="inputEndereco" class="form-label">Endereço:</label>
+            <input type="text" class="form-control" id="inputEndereco" placeholder="1234 Main St">
+        </div>
+        <div class="col-md-6">
+            <label for="inputSenha1" class="form-label">Senha:</label>
+            <input type="password" class="form-control" id="inputSenha1">
+        </div>
+        <div class="col-md-6">
+            <label for="inputSenha2" class="form-label">Confirmar senha:</label>
+            <input type="password" class="form-control" id="inputSenha2">
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}
