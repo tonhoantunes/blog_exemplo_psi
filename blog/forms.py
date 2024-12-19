@@ -1,4 +1,5 @@
 from django import forms
+from django.core.exceptions import ValidationError
 from .models import Mensagem
 
 class MensagemForm(forms.ModelForm):
@@ -11,3 +12,13 @@ class MensagemForm(forms.ModelForm):
         #        'placeholder': 'Digite seu nome: '
         #    })
         #}
+
+    def clean_cidade(self):
+        data = self.cleaned_data["cidade"]
+        cidades_validas = ["SPP", "São Pedro", "Bom Jesus"]
+        
+        if (not data in cidades_validas):
+            raise ValidationError("Cidade inválida!")
+
+        return data
+    
