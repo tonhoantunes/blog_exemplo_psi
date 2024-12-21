@@ -4,6 +4,33 @@ from .models import Mensagem, Post
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Row, Column, Submit
 
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = "__all__"
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.layout = Layout(
+            Row(
+                Column('titulo', css_class='col-md-6'),
+                Column('subtitulo', css_class='col-md-6'),
+                css_class='row'
+            ),
+            Row(
+                Column('usuario', css_class='col-md-6'),
+                Column('capa', css_class='col-md-6'),
+                css_class='row'
+            ),
+            Row(
+                Column('conteudo', css_class='col-12'),
+                css_class='row'
+            ),
+            Submit('submit', 'Enviar', css_class='btn btn-primary text-uppercase')
+        )
+
 class MensagemForm(forms.ModelForm):
     class Meta:
         model = Mensagem
@@ -44,31 +71,4 @@ class MensagemForm(forms.ModelForm):
                 css_class='row'
             ),
             Submit('submit', 'Enviar', css_class='btn btn-primary text-uppercase')
-        )
-
-class PostForm(forms.ModelForm):
-    class Meta:
-        model = Post
-        fields = ['titulo', 'subtitulo', 'usuario', 'conteudo', 'capa']
-    
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_method = 'post'
-        self.helper.layout = Layout(
-            Row(
-                Column('titulo', css_class='col-md-6'),
-                Column('subtitulo', css_class='col-md-6'),
-                css_class='row'
-            ),
-            Row(
-                Column('usuario', css_class='col-md-6'),
-                Column('capa', css_class='col-md-6'),
-                css_class='row'
-            ),
-            Row(
-                Column('conteudo', css_class='col-12'),
-                css_class='row'
-            ),
-            Submit('submit', 'Postar', css_class='btn btn-primary text-uppercase')
         )

@@ -28,12 +28,12 @@ def criar_post(request):
     }
 
     if request.method == "POST":
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('index')
         else:
-            context["form"] = form
+            context["form"] = form # esse é o form com os erros
     else:
         context["form"] = PostForm()
 
@@ -84,7 +84,7 @@ def contato(request):
         form = MensagemForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('mensagens')
+            return redirect('mensagem')
         else:
             context["form"] = form
     else:
